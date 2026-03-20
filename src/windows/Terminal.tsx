@@ -1,59 +1,63 @@
-import { Check, Flag } from "lucide-react"
-import { techStack } from "../constants"
-import WindowWrapper from "../hoc/WindowWrapper"
+import { Check, Flag } from "lucide-react";
+import { techStack } from "../constants";
+import WindowWrapper from "../hoc/WindowWrapper";
 
 const Terminal = () => {
-    return(
-        <>
-        <div id="window-header">
-            <p>Window Controls</p>
-            <h2>Tech Stack</h2>
-            
-            </div>
-            <div className="techstack">
-            <p>
-                <span className="font-bold"> @adrian % </span>
-                show tech stack
-            </p>
-           <div className="label">
-            <p className="w-32">Catergory</p>
-            <p>Technologies</p>
-           </div>
+  return (
+    <>
+      {/* Header */}
+      <div
+        id="window-header"
+        
+      >
+        <p className="text-sm text-gray-400">Window Controls</p>
+        <h2 className="font-bold text-lg">Tech Stack</h2>
+      </div>
 
-               <ul className="content">
-                {techStack.map(({category, items}) => (
-                    <li>
-                        <Check className="check" size={20}/>
-                        <h3>{category}</h3>
-                        <ul>
-                            {items.map((item, i) => (
-                                <li key={i}>{item}{i < items.length -1 ? "," : ""}</li>
-                            ))}
-                        </ul>
-                    </li>
-                ))}</ul>    
-                <div className="footnote">
-                    <p>
-                        <Check size={20} /> 6 of 6 stacks loaded successfully (100%)
-                    </p>
-                    <p className="text-black">
-                        <Flag size={15} fill="black" />
-                        Render time : 6ms
+      {/* Body */}
+      <div className="techstack ">
+        <p className="mb-4">
+          <span className="font-bold">@adrian $ </span> show tech stack
+        </p>
 
+        {/* Header Row */}
+        <div className="label ">
+          <p className="w-40">Category</p>
+          <p>Technologies</p>
+        </div>
 
-                         </p>
-                        
+        {/* Content Rows */}
+        <ul className="content ">
+          {techStack.map(({ category, items }, idx) => (
+            <li key={idx} className="flex py-2">
+              {/* Left column */}
+              <div className="flex items-center w-40 gap-2">
+                <Check className="text-green-500" size={18} />
+                <h3 className="font-semibold">{category}</h3>
+              </div>
 
+              {/* Right column */}
+              <div className="flex-1">
+                <p>{items.join(", ")}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
 
+        {/* Footer */}
+        <div className="footnote ">
+          <p className="flex items-center gap-2 text-green-500">
+            <Check size={18} /> {techStack.length} of {techStack.length} stacks
+            loaded successfully (100%)
+          </p>
+          <p className="flex items-center gap-2 text-black">
+            <Flag size={15} fill="black" /> Render time : 6ms
+          </p>
+        </div>
+      </div>
+    </>
+  );
+};
 
-                </div>
-
-            </div>
-            
-            </>
-    )
-}
-
-const TerminalWindow = WindowWrapper(Terminal, 'terminal')
-
-export default TerminalWindow
+const TerminalWindow = WindowWrapper(Terminal, "terminal");
+export default TerminalWindow;
