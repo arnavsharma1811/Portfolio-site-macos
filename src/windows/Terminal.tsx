@@ -18,7 +18,7 @@ const Terminal = () => {
       {/* Body */}
       <div className="techstack ">
         <p className="mb-4">
-          <span className="font-bold">@adrian $ </span> show tech stack
+          <span className="font-bold">@ARNAV $ </span> show tech stack
         </p>
 
         {/* Header Row */}

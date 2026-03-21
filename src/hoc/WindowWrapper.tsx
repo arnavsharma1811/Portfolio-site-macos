@@ -56,7 +56,7 @@ function WindowWrapper<P extends object>(
         id={windowKey}
         ref={ref}
         style={{ zIndex: win.zIndex }}
-        className="absolute top-20 left-20 w-[600px] h-[400px] overflow-y-auto cursor-move"
+        className="absolute top-20 left-20 inline-block overflow-y-auto cursor-move"
         onClick={() => focusWindow(windowKey)}
       >
         <Component {...props} />
